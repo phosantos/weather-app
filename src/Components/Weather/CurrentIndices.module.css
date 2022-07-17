@@ -1,0 +1,21 @@
+.currentIndices {
+  margin-bottom: 40px;
+  font-size: .75rem;
+  display: grid;
+  gap: 10px;
+}
+
+.indice {
+  padding: 10px 20px;
+  background-color: var(--light-background);
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

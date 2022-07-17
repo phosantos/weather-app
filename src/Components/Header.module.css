@@ -1,0 +1,33 @@
+.header {
+  border-bottom: 1px solid var(--grey);
+}
+
+.headerContainer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.searchButton:hover {
+  background-color: var(--blue);
+}
+
+

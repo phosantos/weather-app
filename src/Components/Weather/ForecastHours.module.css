@@ -1,0 +1,65 @@
+.forecastHours h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.hours {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+  overflow-x: scroll;
+  padding-bottom: 10px;
+  list-style: none;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+.hourItem > div {
+  box-sizing: border-box;
+  width: 60px;
+  padding: 10px;
+  background-color: var(--light-background);
+  border-radius: 10px;
+  display: grid;
+  justify-items: center;
+}
+
+.hourItem p {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hourItem span {
+  display: block;
+  text-align: center;
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+}
+
+/* scrollbar */
+.hours {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) var(--light-background);
+}
+
+.hours::-webkit-scrollbar {
+  height: 10px;
+  
+}
+
+.hours::-webkit-scrollbar-track {
+  background: var(--light-background);
+  border-radius: 5px;
+}
+
+.hours::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 5px;
+}
