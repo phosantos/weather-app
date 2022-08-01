@@ -6,15 +6,22 @@ import API_KEY from '../API_KEY';
 import { WeatherContext } from '../WeatherContext';
 
 const Search = ({ setOpenSearch }) => {
-  // const [inputValue, setInputValue] = React.useState('');
+  const [inputValue, setInputValue] = React.useState('');
   const { setGeolocation } = React.useContext(WeatherContext);
-  const [searchValue, setSearchValue] = React.useState();
   const [data, setData] = React.useState(null);
 
-  function handleEnterClick(e) {
-    if (e.key === 'Enter' && e.target.value) {
-      setSearchValue(e.target.value);
-    }
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!inputValue) return;
+
+    fetch(
+      `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${inputValue
+        .toLowerCase()
+        .split(' ')
+        .join('-')}`,
+    )
+      .then((r) => r.json())
+      .then((json) => setData(json));
   }
 
   function onResultOptionClick({ target }) {
@@ -23,33 +30,19 @@ const Search = ({ setOpenSearch }) => {
     setOpenSearch((currValue) => !currValue);
   }
 
-  React.useEffect(() => {
-    if (searchValue) {
-      fetch(
-        `https://api.weatherapi.com/v1/search.json?key=${API_KEY}&q=${searchValue
-          .toLowerCase()
-          .split(' ')
-          .join('-')}`,
-      )
-        .then((r) => r.json())
-        .then((json) => setData(json));
-    }
-  }, [searchValue]);
-
   return (
     <section>
       <div className={styles.searchHeader}>
         <div className={`${styles.searchHeaderContainer} container`}>
-          <div className={styles.searchBar}>
+          <form className={styles.searchBar} onSubmit={handleSubmit}>
             <SearchIcon />
             <input
               type="text"
               placeholder="Search..."
-              // value={inputValue}
-              // onChange={(e) => setInputValue(e.target.value)}
-              onKeyDown={handleEnterClick}
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
             />
-          </div>
+          </form>
           <div
             className={styles.closeSearchButton}
             onClick={() => {
